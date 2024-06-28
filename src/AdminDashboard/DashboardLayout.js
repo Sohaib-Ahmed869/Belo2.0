@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import Logo from "../Assets/Logo.png";
 import dashboard from "../Assets/dashboard.png";
 
+
+import Dashboard from "./dashboard";
+
 const DashboardLayout = () => {
   const [activeOption, setActiveOption] = useState("Dashboard");
   return (
-    <div className="flex flex-row h-screen w-full">
-      <div className="w-1/6 bg-white">
+    <div className="flex flex-row w-full">
+      <div className="w-1/6 bg-white border-r border-black"> 
         <img src={Logo} alt="logo" className="w-36 m-5" />
         <div className="flex flex-col items-start justify-center text-black ">
           <div
@@ -93,7 +96,19 @@ const DashboardLayout = () => {
         </div>
       </div>
       <div className="w-5/6 bg-gray-200">
-        <p>Dashboard</p>
+        {
+          {
+            Dashboard: <Dashboard />,
+            Candidates: <div>Candidates</div>,
+            Roles: <div>Roles</div>,
+            Team: <div>Team</div>,
+            Schedule: <div>Schedule</div>,
+            Settings: <div>Settings</div>,
+            Profile: <div>Profile</div>,
+            Billing: <div>Billing</div>,
+            Email: <div>Email</div>,
+          }[activeOption]
+        }
       </div>
     </div>
   );
