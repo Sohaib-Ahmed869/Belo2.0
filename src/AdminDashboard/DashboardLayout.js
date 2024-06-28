@@ -4,6 +4,7 @@ import dashboard from "../Assets/dashboard.png";
 
 
 import Dashboard from "./dashboard";
+import Team from "./team";
 
 const DashboardLayout = () => {
   const [activeOption, setActiveOption] = useState("Dashboard");
@@ -95,13 +96,13 @@ const DashboardLayout = () => {
           </div>
         </div>
       </div>
-      <div className="w-5/6 bg-gray-200">
+      <div className="w-5/6 bg-white">
         {
           {
             Dashboard: <Dashboard />,
             Candidates: <div>Candidates</div>,
             Roles: <div>Roles</div>,
-            Team: <div>Team</div>,
+            Team: <Team />,
             Schedule: <div>Schedule</div>,
             Settings: <div>Settings</div>,
             Profile: <div>Profile</div>,
