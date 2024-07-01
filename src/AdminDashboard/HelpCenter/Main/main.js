@@ -28,7 +28,7 @@ const HelpCenter = () => {
       <div className="text-center mb-8">
         <button className="bg-blue-500 text-white py-2 px-4 rounded-full">Schedule a demo</button>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 mx-24">
         {cards.map((card, index) => (
           <Card key={index} title={card.title} description={card.description} />
         ))}

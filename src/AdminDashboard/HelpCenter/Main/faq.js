@@ -9,7 +9,7 @@ const FAQ = ({ faqs }) => {
 
   return (
     <div className="mb-16">
-      <h2 className="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h2>
+      <h2 className="text-3xl font-semibold text-center mb-8">Frequently Asked Questions</h2>
       <div className="max-w-2xl mx-auto">
         {faqs.map((faq, index) => (
           <div key={index} className="mb-4 border-b">

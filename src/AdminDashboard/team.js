@@ -39,7 +39,7 @@ const Team = () => {
   const [show, setShow] = useState(false);
 
   return (
-    <div className="py-8 px-10 relative">
+    <div className="py-8 px-10 mx-auto relative">
       <Button
         className="flex absolute top-10 right-12 text-sm border border-gray-500 rounded-md px-2 py-1"
         onClick={() => setShow(true)}
