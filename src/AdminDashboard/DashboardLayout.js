@@ -6,6 +6,7 @@ import dashboard from "../Assets/dashboard.png";
 import Dashboard from "./dashboard";
 import Team from "./team";
 import Schedule from "./schedule";
+import HelpCenter from "./HelpCenter/main";
 
 const DashboardLayout = () => {
   const [activeOption, setActiveOption] = useState("Dashboard");
@@ -105,6 +106,7 @@ const DashboardLayout = () => {
             Roles: <div>Roles</div>,
             Team: <Team />,
             Schedule: <Schedule />,
+            HelpCenter: <HelpCenter />,
             Settings: <div>Settings</div>,
             Profile: <div>Profile</div>,
             Billing: <div>Billing</div>,
