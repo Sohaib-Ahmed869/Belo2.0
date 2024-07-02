@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import dashboard from "../Assets/dashboard.png";
-
 import profilepic from "../Assets/profilepic.png";
 const data = [
   {
@@ -90,11 +89,8 @@ const messages = [
     date: "12/12/2021",
   },
 ];
-
-const Dashboard = () => {
+const Candidates = () => {
   const [activitiesDates, setActivitiesDates] = useState([]);
-
-  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     const uniqueDates = [
@@ -254,4 +250,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Candidates;
