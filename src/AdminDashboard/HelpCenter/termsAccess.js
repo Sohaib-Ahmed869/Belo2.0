@@ -22,7 +22,7 @@ const content = {
 
 const TermsAccess = () => {
   return (
-    <div className="w-full mx-auto px-10 py-8">
+    <div className="py-8 mx-auto w-full max-w-6xl px-10 relative">
       <h1 className="text-3xl mb-4">Terms & Access</h1>
       <h2 className="text-xl mb-4">{content.title}</h2>
       {content.description.map((desc, index) => (

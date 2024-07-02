@@ -44,7 +44,7 @@ const Schedule = () => {
   });
 
   return (
-    <div className="py-8 px-10 relative">
+    <div className="py-8 mx-auto w-full max-w-6xl px-10 relative">
       <h1 className="text-2xl">Schedule</h1>
       <p className="text-gray-500 mt-5">Upcoming Events</p>
       <div className="pt-5 p-5 w-full shadow rounded-xl mt-5 border border-gray-100">
@@ -61,7 +61,7 @@ const Schedule = () => {
                 <option value="week">Week</option>
               </select> */}
             </div>
-            <div className="flex items-center border border-gray-300 rounded-md px-2 py-1 bg-white">
+            <div className="flex items-center border border-gray-300 rounded-md px-2 py-1 ">
               <input
                 type="text"
                 placeholder="Search"

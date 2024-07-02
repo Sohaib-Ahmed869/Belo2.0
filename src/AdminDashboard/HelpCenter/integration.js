@@ -47,7 +47,7 @@ const apps = [
 
 const UsingBelo = () => {
   return (
-    <div className="w-full mx-auto px-10 py-8">
+    <div className="py-8 mx-auto w-full max-w-6xl px-10 relative">
       <h1 className="text-3xl mb-4">Integration</h1>
       <h2 className="text-xl mb-4">{content.title}</h2>
       <p className="text-gray-700">{content.description}</p>
@@ -63,7 +63,7 @@ const UsingBelo = () => {
       <div className="mx-24">
         <div className="grid grid-cols-3 gap-10">
           {apps.map((app, index) => (
-            <div key={index} className="bg-white p-4 rounded-lg shadow-md border border-gray-100">
+            <div key={index} className=" p-4 rounded-lg shadow-md border border-gray-100">
               <img src={app.logo} alt={app.name} className="w-6 h-6 mb-1" />
               <h3 className="text-xl mb-2">{app.name}</h3>
               <p className="text-gray-700">{app.description}</p>

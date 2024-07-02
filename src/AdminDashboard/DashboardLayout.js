@@ -12,7 +12,9 @@ import SubBilling from "./HelpCenter/subBilling";
 import TermsAccess from "./HelpCenter/termsAccess";
 import Integration from "./HelpCenter/integration";
 import TroubleShooting from "./HelpCenter/troubleshooting";
-import { set } from "date-fns";
+import Profile from "./Settings/profile";
+import Billing from "./Settings/billing";
+import Email from "./Settings/email";
 
 const DashboardLayout = () => {
   const [activeOption, setActiveOption] = useState("Dashboard");
@@ -40,8 +42,8 @@ const DashboardLayout = () => {
   };
 
   return (
-    <div className="flex flex-row w-full">
-      <div className="w-1/6 bg-white border-r border-black">
+    <div className="flex flex-row w-full bg-white" style={{ minHeight: '100vh' }}>
+      <div className="w-1/6 border-r border-black">
         <img src={Logo} alt="logo" className="w-36 m-5" />
         <div className="flex flex-col items-start justify-center text-black ">
           <div
@@ -236,7 +238,7 @@ const DashboardLayout = () => {
           )}
         </div>
       </div>
-      <div className="w-5/6 bg-white">
+      <div className="w-5/6 ">
         {
           {
             Dashboard: <Dashboard />,
@@ -244,10 +246,9 @@ const DashboardLayout = () => {
             Roles: <div>Roles</div>,
             Team: <Team />,
             Schedule: <Schedule />,
-            Settings: <div>Settings</div>,
-            Profile: <div>Profile</div>,
-            Billing: <div>Billing</div>,
-            Email: <div>Email</div>,
+            Profile: <Profile />,
+            Billing: <Billing />,
+            Email: <Email />,
             HelpCenter: <HelpCenter />,
             GettingStarted: <GettingStarted />,
             UsingBelo: <UsingBelo />,

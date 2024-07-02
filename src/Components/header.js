@@ -5,12 +5,12 @@ import { MdArrowDropDown } from "react-icons/md";
 
 const Header = ({ toggleSidebar }) => {
   return (
-    <div className="flex justify-between items-center p-4 bg-white shadow-md">
+    <div className="flex justify-between items-center p-4  shadow-md">
       <div className="flex items-center">
         <FaBars className="text-red-600" onClick={toggleSidebar} />
       </div>
       <div className="flex gap-10 pr-5">
-        <div className="flex items-center border border-gray-300 rounded-md px-2 py-1 bg-white">
+        <div className="flex items-center border border-gray-300 rounded-md px-2 py-1 ">
           <input
             type="text"
             placeholder="Search"
