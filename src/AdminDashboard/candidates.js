@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import dashboard from "../Assets/dashboard.png";
-
 import profilepic from "../Assets/profilepic.png";
 const data = [
   {
@@ -90,11 +89,8 @@ const messages = [
     date: "12/12/2021",
   },
 ];
-
-const Dashboard = () => {
+const Candidates = () => {
   const [activitiesDates, setActivitiesDates] = useState([]);
-
-  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     const uniqueDates = [
@@ -113,14 +109,14 @@ const Dashboard = () => {
   }, [messages]);
 
   return (
-    <div className="py-8 mx-auto w-full max-w-6xl px-10 relative">
+    <div className="p-20 bg-white h-screen w-full overflow-y-auto">
       <h1 className="text-3xl font-semibold">Dashboard</h1>
       <p className="text-gray-500">
         Below is the summary of your team activity
       </p>
       <div className="flex flex-row gap-5 mt-5">
         {data.map((item) => (
-          <div className="flex  w-1/4 p-5 rounded-lg shadow-md items-center gap-5">
+          <div className="flex bg-white w-1/4 p-5 rounded-lg shadow-md items-center gap-5">
             <div>
               <img
                 src={dashboard}
@@ -174,10 +170,10 @@ const Dashboard = () => {
       <div className="flex flex-row gap-5 mt-10 pb-20">
         <div className="w-1/2 border border-gray-400 rounded-xl p-2">
           {activitiesDates.map((date) => (
-            <div className=" p-5 mt-2 flex flex-col justify-center items-center ">
+            <div className="bg-white p-5 mt-2 flex flex-col justify-center items-center ">
               <div className="line h-1 w-full border-t-2 border-gray-300 border-dashed"></div>
               <h1
-                className="text-sm font-semibold  w-24 text-center"
+                className="text-sm font-semibold bg-white w-24 text-center"
                 style={{ marginTop: "-15px" }}
               >
                 {date}
@@ -213,10 +209,10 @@ const Dashboard = () => {
         </div>
         <div className="w-1/2 border border-gray-400 rounded-xl p-2">
           {messagesDates.map((date) => (
-            <div className=" p-5 mt-2 flex flex-col justify-center items-center ">
+            <div className="bg-white p-5 mt-2 flex flex-col justify-center items-center ">
               <div className="line h-1 w-full border-t-2 border-gray-300 border-dashed"></div>
               <h1
-                className="text-sm font-semibold  w-24 text-center"
+                className="text-sm font-semibold bg-white w-24 text-center"
                 style={{ marginTop: "-15px" }}
               >
                 {date}
@@ -254,4 +250,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Candidates;

@@ -3,6 +3,7 @@ import Logo from "../Assets/Logo.png";
 import dashboard from "../Assets/dashboard.png";
 
 import Dashboard from "./dashboard";
+import Candidates from "./candidates";
 import Team from "./team";
 import Schedule from "./schedule";
 import HelpCenter from "./HelpCenter/Main/main";
