@@ -8,6 +8,7 @@ import OTP from "./Login/otpverificiation";
 
 import DashboardLayout from "./AdminDashboard/DashboardLayout";
 
+
 const Layout = () => {
   return (
     <Routes>
@@ -16,6 +17,7 @@ const Layout = () => {
       <Route path="/forgetpassword" element={<ForgetPassword />} />
       <Route path="/otp" element={<OTP />} />
       <Route path="/admindashboard" element={<DashboardLayout />} />
+
     </Routes>
   );
 };
