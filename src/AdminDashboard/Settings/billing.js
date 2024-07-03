@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import visaLogo from "../../Assets/visa.png";
 import mastercardLogo from "../../Assets/masterCard.png";
+import PaymentMethod from "./Modals/paymentMethod";
 
 const initialBillingState = {
   paymentMethods: [
@@ -50,6 +51,7 @@ const initialBillingState = {
 
 const Billing = () => {
   const [billingState, setBillingState] = useState(initialBillingState);
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
 
   const handleRemoveCard = (index) => {
     const updatedPaymentMethods = billingState.paymentMethods.filter(
@@ -101,7 +103,7 @@ const Billing = () => {
           </div>
         ))}
 
-        <button className="flex items-center text-blue-500 hover:text-blue-700 mb-8 rounded-full border border-gray-300 px-3 py-1">
+        <button className="flex items-center text-blue-500 hover:text-blue-700 mb-8 rounded-full border border-gray-300 px-3 py-1" onClick={() => setShowPaymentModal(true)}>
           <span className="mr-2">+ Add Payment Method</span>
         </button>
 
@@ -154,6 +156,7 @@ const Billing = () => {
           </table>
         </div>
       </div>
+      <PaymentMethod show={showPaymentModal} setShow={setShowPaymentModal} />
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import EmailTemplate from "./Modals/emailTemplate";
 
 const initialTemplates = [
   {
@@ -20,13 +21,14 @@ const initialTemplates = [
 
 const Email = () => {
   const [templates, setTemplates] = useState(initialTemplates);
+  const [showTemplateModal, setShowTemplateModal] = useState(false);
 
   const handleAddTemplate = () => {
-    const newTemplate = {
-      title: "New Template Title",
-      description: "New template description...",
-    };
-    setTemplates([...templates, newTemplate]);
+    // const newTemplate = {
+    //   title: "New Template Title",
+    //   description: "New template description...",
+    // };
+    // setTemplates([...templates, newTemplate]);
   };
 
   const handleEditTemplate = (index) => {
@@ -45,8 +47,11 @@ const Email = () => {
         <h2 className="text-xl mb-4">Email Templates</h2>
 
         <div
-          className="border-dashed border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center mb-6 cursor-pointer"
-          onClick={handleAddTemplate}
+          className="border-dashed border-2 border-gray-300 rounded-lg py-8 flex items-center justify-center mb-6 cursor-pointer"
+          onClick={() => {
+            handleAddTemplate();
+            setShowTemplateModal(true);
+          }}
         >
           <span className="text-blue-500">+ Add Email Template</span>
         </div>
@@ -76,6 +81,7 @@ const Email = () => {
           </div>
         ))}
       </div>
+      <EmailTemplate show={showTemplateModal} setShow={setShowTemplateModal} />
     </div>
   );
 };

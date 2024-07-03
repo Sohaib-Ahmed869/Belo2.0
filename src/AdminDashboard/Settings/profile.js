@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { FaEdit } from "react-icons/fa";
+import ChangeEmail from "./Modals/changeEmail";
+import ChangeNumber from "./Modals/changeNumber";
+import ChangePassword from "./Modals/changePassword";
 
 const initialState = {
   firstName: "Emily",
@@ -17,6 +20,9 @@ const initialState = {
 
 const Profile = () => {
   const [state, setState] = useState(initialState);
+  const [showEmailModal, setShowEmailModal] = useState(false);
+  const [showPhoneModal, setShowPhoneModal] = useState(false);
+  const [showPasswordModal, setShowPasswordModal] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -55,7 +61,6 @@ const Profile = () => {
       <p className="text-gray-500">
         Manage your account settings and preferences
       </p>
-
       <div className="mt-8">
         <h2 className="text-xl mb-4">Profile</h2>
         <div className="flex items-center mb-4">
@@ -109,7 +114,7 @@ const Profile = () => {
                   onChange={handleChange}
                   className="w-full p-2 border border-gray-300 rounded"
                 />
-                <a href="#" className="text-blue-500 text-sm mt-2 block">
+                <a href="#" className="text-blue-500 text-sm mt-2 block" onClick={() => setShowEmailModal(true)}>
                   Change Email <FaEdit className="inline-block" />
                 </a>
               </div>
@@ -124,7 +129,7 @@ const Profile = () => {
                   onChange={handleChange}
                   className="w-full p-2 border border-gray-300 rounded"
                 />
-                <a href="#" className="text-blue-500 text-sm mt-2 block">
+                <a href="#" className="text-blue-500 text-sm mt-2 block" onClick={() => setShowPhoneModal(true)}>
                   Change Number <FaEdit className="inline-block" />
                 </a>
               </div>
@@ -139,7 +144,7 @@ const Profile = () => {
                   onChange={handleChange}
                   className="w-full p-2 border border-gray-300 rounded"
                 />
-                <a href="#" className="text-blue-500 text-sm mt-2 block">
+                <a href="#" className="text-blue-500 text-sm mt-2 block" onClick={() => setShowPasswordModal(true)}>
                   Change Password <FaEdit className="inline-block" />
                 </a>
               </div>
@@ -223,6 +228,9 @@ const Profile = () => {
           </button>
         </form>
       </div>
+      <ChangeEmail show={showEmailModal} setShow={setShowEmailModal} />
+      <ChangeNumber show={showPhoneModal} setShow={setShowPhoneModal} />
+      <ChangePassword show={showPasswordModal} setShow={setShowPasswordModal} />
     </div>
   );
 };
