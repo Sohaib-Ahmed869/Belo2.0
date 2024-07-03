@@ -5,7 +5,7 @@ import { MdArrowDropDown } from "react-icons/md";
 
 const Header = ({ toggleSidebar }) => {
   return (
-    <div className="flex justify-between items-center p-4  shadow-md">
+    <div className="flex justify-between items-center p-4 shadow-md">
       <div className="flex items-center">
         <FaBars className="text-red-600" onClick={toggleSidebar} />
       </div>

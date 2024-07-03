@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Logo from "../Assets/Logo.png";
 import dashboard from "../Assets/dashboard.png";
+import { FaSearch, FaBars, FaUserCircle } from "react-icons/fa";
+import { MdArrowDropDown } from "react-icons/md";
 
 import Dashboard from "./dashboard";
 import Candidates from "./candidates";
@@ -43,8 +45,11 @@ const DashboardLayout = () => {
   };
 
   return (
-    <div className="flex flex-row w-full bg-white" style={{ minHeight: '100vh' }}>
-      <div className="w-1/6 border-r border-black">
+    <div
+      className="flex flex-row w-full bg-white"
+      style={{ minHeight: "100vh" }}
+    >
+      <div className="w-1/6 border-r border-gray-100 shadow">
         <img src={Logo} alt="logo" className="w-36 m-5" />
         <div className="flex flex-col items-start justify-center text-black ">
           <div
@@ -240,25 +245,46 @@ const DashboardLayout = () => {
         </div>
       </div>
       <div className="w-5/6 ">
-        {
+        <div className="flex justify-between items-center p-4 shadow-md">
+          <div className="flex items-center">
+            <FaBars className="text-gray-400" />
+          </div>
+          <div className="flex gap-10 pr-5">
+            <div className="flex items-center border border-gray-300 rounded-md px-2 py-1 ">
+              <input
+                type="text"
+                placeholder="Search"
+                className="outline-none text-gray-600 flex-1"
+              />
+              <FaSearch className="text-gray-600" />
+            </div>
+            <div className="flex items-center gap-2">
+              <FaUserCircle className="text-gray-600" size={24} />
+              <MdArrowDropDown className="text-gray-600" />
+            </div>
+          </div>
+        </div>
+        <div>
           {
-            Dashboard: <Dashboard />,
-            Candidates: <div>Candidates</div>,
-            Roles: <div>Roles</div>,
-            Team: <Team />,
-            Schedule: <Schedule />,
-            Profile: <Profile />,
-            Billing: <Billing />,
-            Email: <Email />,
-            HelpCenter: <HelpCenter />,
-            GettingStarted: <GettingStarted />,
-            UsingBelo: <UsingBelo />,
-            SubBilling: <SubBilling />,
-            TeamsAccess: <TermsAccess />,
-            Integration: <Integration />,
-            TroubleShooting: <TroubleShooting />,
-          }[activeOption]
-        }
+            {
+              Dashboard: <Dashboard />,
+              Candidates: <div>Candidates</div>,
+              Roles: <div>Roles</div>,
+              Team: <Team />,
+              Schedule: <Schedule />,
+              Profile: <Profile />,
+              Billing: <Billing />,
+              Email: <Email />,
+              HelpCenter: <HelpCenter />,
+              GettingStarted: <GettingStarted />,
+              UsingBelo: <UsingBelo />,
+              SubBilling: <SubBilling />,
+              TeamsAccess: <TermsAccess />,
+              Integration: <Integration />,
+              TroubleShooting: <TroubleShooting />,
+            }[activeOption]
+          }
+        </div>
       </div>
     </div>
   );
