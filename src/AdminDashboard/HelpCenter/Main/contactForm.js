@@ -4,7 +4,7 @@ const ContactForm = () => {
   return (
     <div className="max-w-xl mx-auto">
       <h2 className="text-3xl font-semibold text-center mb-8">Contact Us</h2>
-      <form className="bg-white shadow-md rounded-xl p-10 mb-4 border border-gray-100">
+      <form className=" shadow-md rounded-xl p-10 mb-4 border border-gray-100">
         <div className="mb-4 w-full">
           <div className="flex space-x-4 w-full">
             <div className="flex flex-col w-full">

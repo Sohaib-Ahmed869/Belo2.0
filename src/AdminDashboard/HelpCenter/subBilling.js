@@ -13,7 +13,7 @@ const content = {
 
 const SubBilling = () => {
   return (
-    <div className="w-full mx-auto px-10 py-8">
+    <div className="py-8 mx-auto w-full max-w-6xl px-10 relative">
       <h1 className="text-3xl mb-4">Subscription & Billing</h1>
       <h2 className="text-xl mb-4">{content.title}</h2>
       <div className="mb-6 flex itmes-center justify-center">

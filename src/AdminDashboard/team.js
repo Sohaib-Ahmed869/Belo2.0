@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import { Button } from "react-bootstrap";
-import { FaPlus } from "react-icons/fa";
 import { MdMoreVert } from "react-icons/md";
 import { FaTimes } from "react-icons/fa";
 import { Modal } from "react-bootstrap";
@@ -39,7 +38,7 @@ const Team = () => {
   const [show, setShow] = useState(false);
 
   return (
-    <div className="py-8 px-10 mx-auto relative">
+    <div className="py-8 mx-auto w-full max-w-6xl px-10 relative">
       <Button
         className="flex absolute top-10 right-12 text-sm border border-gray-500 rounded-md px-2 py-1"
         onClick={() => setShow(true)}
@@ -75,7 +74,7 @@ const Team = () => {
         show={show}
         onHide={() => setShow(false)}
         centered
-        className="bg-white rounded-2xl shadow-2xl absolute p-10"
+        className="rounded-2xl shadow-2xl absolute p-10"
         style={{
           maxWidth: "600px",
           margin: "auto",

@@ -5,7 +5,7 @@ import dashboard from "../Assets/dashboard.png";
 const Sidebar = () => {
   const [activeOption, setActiveOption] = useState("Dashboard");
   return (
-    <div className="w-full bg-white">
+    <div className="w-full ">
       <img src={Logo} alt="logo" className="w-36 m-5" />
       <div className="flex flex-col items-start justify-center text-black ">
         <div

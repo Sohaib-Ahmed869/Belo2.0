@@ -73,7 +73,7 @@ const Login = () => {
         show={showForgetPasswordModal}
         onHide={() => setShowForgetPasswordModal(false)}
         centered
-        className="bg-white p-10 rounded-2xl w-1/3 shadow-xl z-50"
+        className=" p-10 rounded-2xl w-1/3 shadow-xl z-50"
         style={{
           position: "absolute",
           top: "50%",
