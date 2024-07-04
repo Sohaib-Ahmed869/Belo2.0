@@ -1,251 +1,206 @@
 import React, { useState, useEffect } from "react";
 import { BiDotsVerticalRounded } from "react-icons/bi";
-import dashboard from "../Assets/dashboard.png";
-import profilepic from "../Assets/profilepic.png";
-const data = [
+import { MdDelete } from "react-icons/md";
+import { BsPlus } from "react-icons/bs";
+import { Modal } from "react-bootstrap";
+
+const candidates = [
   {
-    title: "New Candidates",
-    value: "12",
+    firstname: "jon",
+    lastname: "doe",
+    email: "jdoe@gmail.com",
+    phone: "1234567890",
+    position: "Series Producer",
+    location: "New York",
   },
   {
-    title: "Open Roles",
-    value: "5",
+    firstname: "jon",
+    lastname: "doe",
+    email: "jdoe@gmail.com",
+    phone: "1234567890",
+    position: "Researcher",
+    location: "New York",
   },
   {
-    title: "Archived Jobs",
-    value: "8",
+    firstname: "jon",
+    lastname: "doe",
+    email: "jdoe@gmail.com",
+    phone: "1234567890",
+    position: "Executive Producer",
+    location: "New York",
+  },
+  {
+    firstname: "jon",
+    lastname: "doe",
+    email: "jdoe@gmail.com",
+    phone: "1234567890",
+    position: "Line Producer",
+    location: "New York",
   },
 ];
 
-const TaskList = [
-  {
-    taskname: "Task 1",
-    createdby: "Admin",
-    createdOn: "12/12/2021",
-    Reminder: "12/12/2021",
-    Status: "In Progress",
-  },
-  {
-    taskname: "Task 1",
-    createdby: "Admin",
-    createdOn: "12/12/2021",
-    Reminder: "12/12/2021",
-    Status: "Completed",
-  },
-  {
-    taskname: "Task 1",
-    createdby: "Admin",
-    createdOn: "12/12/2021",
-    Reminder: "12/12/2021",
-    Status: "Completed",
-  },
-  {
-    taskname: "Task 1",
-    createdby: "Admin",
-    createdOn: "12/12/2021",
-    Reminder: "12/12/2021",
-    Status: "In Progress",
-  },
-];
-
-const activities = [
-  {
-    by: "John Doe",
-    activity: "comment",
-    post: "Development",
-    date: "12/12/2021",
-    time: "12:00 AM",
-  },
-  {
-    by: "Jane Doe",
-    activity: "comment",
-    post: "Development",
-    date: "13/12/2021",
-    time: "12:00 PM",
-  },
-  {
-    by: "John Doe",
-    activity: "comment",
-    post: "Development",
-    date: "14/12/2021",
-    time: "11:00 AM",
-  },
-];
-
-const messages = [
-  {
-    by: "John Doe",
-    message: "Hello",
-    date: "12/12/2021",
-  },
-  {
-    by: "Jane Doe",
-    message: "Hello",
-    date: "12/12/2021",
-  },
-  {
-    by: "John Doe",
-    message: "Hello",
-    date: "12/12/2021",
-  },
-];
 const Candidates = () => {
-  const [activitiesDates, setActivitiesDates] = useState([]);
-
-  useEffect(() => {
-    const uniqueDates = [
-      ...new Set(activities.map((activity) => activity.date)),
-    ];
-    setActivitiesDates(uniqueDates);
-  }, [activities]);
-
-  const [messagesDates, setMessagesDates] = useState(
-    messages.map((message) => message.date)
-  );
-
-  useEffect(() => {
-    const uniqueDates = [...new Set(messages.map((message) => message.date))];
-    setMessagesDates(uniqueDates);
-  }, [messages]);
-
+  const [showAddCandidate, setShowAddCandidate] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [position, setPosition] = useState("");
+  const [availability, setAvailability] = useState("");
+  const [location, setLocation] = useState("");
+  const [file, setFile] = useState("");
   return (
     <div className="p-20 bg-white h-screen w-full overflow-y-auto">
-      <h1 className="text-3xl font-semibold">Dashboard</h1>
-      <p className="text-gray-500">
-        Below is the summary of your team activity
-      </p>
-      <div className="flex flex-row gap-5 mt-5">
-        {data.map((item) => (
-          <div className="flex bg-white w-1/4 p-5 rounded-lg shadow-md items-center gap-5">
-            <div>
-              <img
-                src={dashboard}
-                alt="dashboard"
-                className="w-10 p-2 bg-slate-100 rounded-full"
-              />
-            </div>
-            <div>
-              <p className="text-gray-500">{item.title}</p>
-              <p className="text-2xl font-semibold">{item.value}</p>
-            </div>
-          </div>
-        ))}
+      <div className="flex justify-between">
+        <div>
+          <h1 className="text-2xl font-bold  mb-2">Candidates</h1>
+          <p className="text-gray-500">Below is the list of all candidates</p>
+        </div>
+        <div className="flex items-center gap-4">
+          <button
+            className="border-2 border-gray-600 text-black px-5 py-2 rounded-md hover:bg-gray-600 hover:text-white flex items-center gap-2"
+            onClick={() => setShowAddCandidate(true)}
+          >
+            <BsPlus className="inline-block" />
+            Add Candidate
+          </button>
+          <button className="border-2 border-gray-600 text-black px-5 py-2 rounded-md hover:bg-gray-600 hover:text-white">
+            Bulk Actions
+          </button>
+        </div>
       </div>
-      <h1 className="text-2xl font-bold mt-10 mb-2">Tasks</h1>
       <div className="table w-full mt-2 border rounded-md p-5 shadow-lg">
-        <h1 className="text-2xl font-semibold">Tasks List</h1>
+        <h1 className="text-2xl font-semibold">All Candidates</h1>
         <table className="w-full border-none mt-2">
           <tr className="text-left">
-            <th className="font-semibold text-gray-600 p-4">TASK NAME</th>
-            <th className="font-semibold text-gray-600">CREATED BY</th>
-            <th className="font-semibold text-gray-600">CREATED ON</th>
-            <th className="font-semibold text-gray-600">REMINDER</th>
-            <th className="font-semibold text-gray-600 text-center">STATUS</th>
+            <th className="font-semibold text-gray-600 p-4"></th>
+            <th className="font-semibold text-gray-600 p-4">FIRST NAME</th>
+            <th className="font-semibold text-gray-600">LAST NAME</th>
+            <th className="font-semibold text-gray-600">POSITION</th>
+            <th className="font-semibold text-gray-600">EMAIL</th>
+            <th className="font-semibold text-gray-600 text-center">
+              LOCATION
+            </th>
             <th className="w-16 text-center"></th>
           </tr>
-          {TaskList.map((task) => (
+          {candidates.map((task) => (
             <tr className="items-center justify-center bg-gray-50">
-              <td className="p-4">{task.taskname}</td>
-              <td>{task.createdby}</td>
-              <td>{task.createdOn}</td>
-              <td>{task.Reminder}</td>
-              <td>
-                <div
-                  className={`${
-                    task.Status === "Completed"
-                      ? "text-green-900 font-bold text-sm bg-green-300 p-2 rounded-full text-center"
-                      : "text-red-900 font-bold text-sm bg-red-300 p-2 rounded-full text-center"
-                  }`}
-                >
-                  {task.Status}
-                </div>
+              <td className="text-center">
+                <input type="checkbox" />
               </td>
+
+              <td>{task.firstname}</td>
+              <td>{task.lastname}</td>
+              <td>{task.position}</td>
+              <td>{task.email}</td>
+              <td>{task.location}</td>
+
               <td className="w-24 text-center flex justify-center items-center p-5">
-                <BiDotsVerticalRounded />
+                <MdDelete className="text-red-500" />
               </td>
             </tr>
           ))}
         </table>
       </div>
-      <div className="flex flex-row gap-5 mt-10 pb-20">
-        <div className="w-1/2 border border-gray-400 rounded-xl p-2">
-          {activitiesDates.map((date) => (
-            <div className="bg-white p-5 mt-2 flex flex-col justify-center items-center ">
-              <div className="line h-1 w-full border-t-2 border-gray-300 border-dashed"></div>
-              <h1
-                className="text-sm font-semibold bg-white w-24 text-center"
-                style={{ marginTop: "-15px" }}
-              >
-                {date}
-              </h1>
-              {activities.map(
-                (activity) =>
-                  activity.date === date && (
-                    <div className="flex flex-row gap-5 mt-2 items-center">
-                      <img
-                        src={profilepic}
-                        alt="dashboard"
-                        className="w-12 h-12 bg-slate-100 rounded-full"
-                      />
-                      <div className="flex flex-col gap-5 mt-2">
-                        <div className="flex flex-row gap-2">
-                          <p className="font-semibold">{activity.by}</p>
-                          <p className=" text-gray-500">
-                            has left a {activity.activity} on the post
-                          </p>
-                          <p className="font-semibold">{activity.post}</p>
-                        </div>
-                        <div>
-                          <p className="text-gray-500 text-sm">
-                            {activity.time}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  )
-              )}
-            </div>
-          ))}
-        </div>
-        <div className="w-1/2 border border-gray-400 rounded-xl p-2">
-          {messagesDates.map((date) => (
-            <div className="bg-white p-5 mt-2 flex flex-col justify-center items-center ">
-              <div className="line h-1 w-full border-t-2 border-gray-300 border-dashed"></div>
-              <h1
-                className="text-sm font-semibold bg-white w-24 text-center"
-                style={{ marginTop: "-15px" }}
-              >
-                {date}
-              </h1>
-              <div className="flex flex-col w-full">
-                {messages.map(
-                  (message) =>
-                    message.date === date && (
-                      <div className="flex flex-row gap-5 mt-2 items-center">
-                        <img
-                          src={profilepic}
-                          alt="dashboard"
-                          className="w-12 h-12 bg-slate-100 rounded-full"
-                        />
-                        <div className="flex flex-col gap-5 mt-2">
-                          <div className="flex flex-row gap-2">
-                            <p className="font-semibold">{message.by}</p>
-                            <p className=" text-gray-500">has sent a message</p>
-                          </div>
-                          <div>
-                            <p className="text-gray-500 text-sm">
-                              {message.message}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    )
-                )}
+      <Modal
+        show={showAddCandidate}
+        onHide={() => setShowAddCandidate(false)}
+        centered
+        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border border-gray-300 rounded-2xl w-1/2 shadow-xl z-50 bg-white p-10"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Add Candidate</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form>
+            <div className="flex flex-col gap-4">
+              <div className="flex flex-row items-center gap-6">
+                <div className="flex flex-col gap-2 w-1/2">
+                  <label className="font-bold">Name</label>
+                  <input
+                    type="text"
+                    placeholder="Enter Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="border-2 border-gray-300 p-2 rounded-md"
+                  />
+                </div>
+                <div className="flex flex-col gap-2 w-1/2">
+                  <label className="font-bold">Email</label>
+                  <input
+                    type="email"
+                    placeholder="Enter Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="border-2 border-gray-300 p-2 rounded-md"
+                  />
+                </div>
+              </div>
+              <div className="flex flex-row items-center gap-6">
+                <div className="flex flex-col gap-4 w-1/2">
+                  <label className="font-bold">Phone</label>
+                  <input
+                    type="tel"
+                    placeholder="Enter Phone"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className="border-2 border-gray-300 p-2 rounded-md"
+                  />
+                </div>
+                <div className="flex flex-col gap-4 w-1/2">
+                  <label className="font-bold">Position</label>
+                  <input
+                    type="text"
+                    placeholder="Enter Position"
+                    value={position}
+                    onChange={(e) => setPosition(e.target.value)}
+                    className="border-2 border-gray-300 p-2 rounded-md"
+                  />
+                </div>
+              </div>
+              <div className="flex flex-row items-center gap-6">
+                <div className="flex flex-col gap-2 w-1/2">
+                  <label className="font-bold">Location</label>
+                  <input
+                    type="text"
+                    placeholder="Enter Location"
+                    value={location}
+                    onChange={(e) => setLocation(e.target.value)}
+                    className="border-2 border-gray-300 p-2 rounded-md"
+                  />
+                </div>
+                <div className="flex flex-col gap-2 w-1/2">
+                  <label className="font-bold">Availability</label>
+                  <input
+                    type="date"
+                    placeholder="Enter Availability"
+                    value={availability}
+                    onChange={(e) => setAvailability(e.target.value)}
+                    className="border-2 border-gray-300 p-2 rounded-md"
+                  />
+                </div>
+              </div>
+              <div className="flex flex-col gap-2">
+                <label className="font-bold">Resume</label>
+                <input
+                  type="file"
+                  value={file}
+                  onChange={(e) => setFile(e.target.value)}
+                  className="border-2 border-gray-300 p-2 rounded-md h-28"
+                />
               </div>
             </div>
-          ))}
-        </div>
-      </div>
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+
+          <button
+            onClick={() => setShowAddCandidate(false)}
+            className="border-0 bg-blue-400 text-white px-5 py-2 rounded-full hover:bg-blue-600 hover:text-white w-full mt-10"
+          >
+            Add Candidate
+          </button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };
