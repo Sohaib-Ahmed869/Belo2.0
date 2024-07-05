@@ -66,7 +66,7 @@ const RoleDescription = ({ role }) => {
       {!selectedRole ? (
         <div>
           <div>
-            <h1 className="text-2xl font-bold  mb-2">Roles</h1>
+            <h1 className="text-3xl font-semi bold text-left">Roles</h1>
           </div>
           <div
             className="mt-9 border border-gray-200 p-4 rounded-lg hover:bg-gray-100 cursor-pointer hover:shadow-lg"
@@ -172,7 +172,7 @@ const RoleDescription = ({ role }) => {
       ) : (
         <div>
           <div>
-            <h1 className="text-2xl font-bold  mb-2">Roles</h1>
+            <h1 className="text-3xl font-semi bold text-left">Roles</h1>
             <div
               className="mt-9 border border-gray-200 p-5 rounded-lg hover:bg-gray-100 cursor-pointer hover:shadow-lg"
               onClick={() => setSelectedRole(role)}
@@ -262,7 +262,7 @@ const Candidates = () => {
   ) : (
     <div className="p-20 bg-white h-screen w-full overflow-y-auto z-1">
       <div>
-        <h1 className="text-2xl font-bold  mb-2">Roles</h1>
+        <h1 className="text-3xl font-semi bold text-left">Roles</h1>
       </div>
       <div className="mt-9">
         <h2 className="text-xl text-gray-600 font-semibold">Labels</h2>

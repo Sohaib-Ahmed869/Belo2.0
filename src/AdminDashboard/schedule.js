@@ -44,8 +44,8 @@ const Schedule = () => {
   });
 
   return (
-    <div className="py-8 mx-auto w-full max-w-6xl px-10 relative">
-      <h1 className="text-2xl">Schedule</h1>
+    <div className="py-8 mx-auto w-full  px-10 relative">
+      <h1 className="text-3xl font-semi bold text-left">Schedule</h1>
       <p className="text-gray-500 mt-5">Upcoming Events</p>
       <div className="pt-5 p-5 w-full shadow rounded-xl mt-5 border border-gray-100">
         <div className="p-4">

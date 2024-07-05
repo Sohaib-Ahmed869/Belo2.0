@@ -56,7 +56,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="py-8 mx-auto w-full max-w-6xl px-10 relative">
+    <div className="py-8 mx-auto w-full  px-10 relative">
       <h1 className="text-2xl mb-4">Settings</h1>
       <p className="text-gray-500">
         Manage your account settings and preferences

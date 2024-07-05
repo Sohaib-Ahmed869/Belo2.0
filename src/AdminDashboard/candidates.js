@@ -63,11 +63,13 @@ const Candidates = () => {
   return selectedCandidate ? (
     <div className="p-20 bg-white h-screen w-full overflow-y-auto z-1"></div>
   ) : (
-    <div className="p-20 bg-white h-screen w-full overflow-y-auto z-1">
+    <div className="p-10 bg-white h-screen w-full overflow-y-auto z-1">
       <div className="flex justify-between">
         <div>
-          <h1 className="text-2xl font-bold  mb-2">Candidates</h1>
-          <p className="text-gray-500">Below is the list of all candidates</p>
+          <h1 className="text-3xl font-semi bold text-left">Candidates</h1>
+          <p className="text-gray-500 text-left">
+            Below is the summary of all candidates
+          </p>
         </div>
         <div className="flex items-center gap-4">
           <button
