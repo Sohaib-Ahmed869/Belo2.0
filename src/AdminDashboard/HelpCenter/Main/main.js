@@ -5,7 +5,7 @@ import Card from "./card";
 import { Modal } from "react-bootstrap";
 import { FaTimes } from "react-icons/fa";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { Datepicker, Flowbite, CustomFlowbiteTheme } from "flowbite-react";
+// import { Datepicker, Flowbite, CustomFlowbiteTheme } from "flowbite-react";
 const cards = [
   {
     title: "Getting Started",
@@ -241,12 +241,12 @@ const HelpCenter = () => {
                     ))}
                   </div>
                   <div className="flex items-center justify-center w-full">
-                    <Datepicker
+                    {/* <Datepicker
                       inline
                       value={value}
                       onChange={setValue}
                       theme={customTheme}
-                    />
+                    /> */}
                   </div>
                 </div>
               </div>

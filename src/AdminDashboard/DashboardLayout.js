@@ -5,7 +5,6 @@ import { FaSearch, FaBars, FaUserCircle } from "react-icons/fa";
 import { MdArrowDropDown } from "react-icons/md";
 
 import Dashboard from "./dashboard";
-import Candidates from "./candidates";
 import Team from "./team";
 import Schedule from "./schedule";
 import HelpCenter from "./HelpCenter/Main/main";
@@ -18,6 +17,8 @@ import TroubleShooting from "./HelpCenter/troubleshooting";
 import Profile from "./Settings/profile";
 import Billing from "./Settings/billing";
 import Email from "./Settings/email";
+import Candidates from "./candidates";
+import RolesDashboard from "./Roles/rolesdashboard";
 
 const DashboardLayout = () => {
   const [activeOption, setActiveOption] = useState("Dashboard");
@@ -268,8 +269,8 @@ const DashboardLayout = () => {
           {
             {
               Dashboard: <Dashboard />,
-              Candidates: <div>Candidates</div>,
-              Roles: <div>Roles</div>,
+              Candidates: <Candidates />,
+              Roles: <RolesDashboard />,
               Team: <Team />,
               Schedule: <Schedule />,
               Profile: <Profile />,

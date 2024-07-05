@@ -113,7 +113,7 @@ const Dashboard = () => {
   }, [messages]);
 
   return (
-    <div className="py-8 mx-auto w-full max-w-6xl px-10 relative">
+    <div className="py-8 mx-auto w-full max-w-6xl relative">
       <h1 className="text-3xl font-semi bold">Dashboard</h1>
       <p className="text-gray-500">
         Below is the summary of your team activity

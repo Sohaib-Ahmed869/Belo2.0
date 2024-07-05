@@ -41,6 +41,12 @@ const candidates = [
 
 const Candidates = () => {
   const [showAddCandidate, setShowAddCandidate] = useState(false);
+  const [showBulkActions, setShowBulkActions] = useState(false);
+  const [showEmailModal1, setShowEmailModal1] = useState(false);
+  const [showEmailModal2, setShowEmailModal2] = useState(false);
+  const [selectedCandidate, setSelectedCandidate] = useState("");
+  const [emailToSend, setEmailToSend] = useState("");
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -48,8 +54,16 @@ const Candidates = () => {
   const [availability, setAvailability] = useState("");
   const [location, setLocation] = useState("");
   const [file, setFile] = useState("");
-  return (
-    <div className="p-20 bg-white h-screen w-full overflow-y-auto">
+  const [templates, setTemplates] = useState([
+    "Template 1",
+    "Template 2",
+    "Template 3",
+    "Template 4",
+  ]);
+  return selectedCandidate ? (
+    <div className="p-20 bg-white h-screen w-full overflow-y-auto z-1"></div>
+  ) : (
+    <div className="p-20 bg-white h-screen w-full overflow-y-auto z-1">
       <div className="flex justify-between">
         <div>
           <h1 className="text-2xl font-bold  mb-2">Candidates</h1>
@@ -63,7 +77,10 @@ const Candidates = () => {
             <BsPlus className="inline-block" />
             Add Candidate
           </button>
-          <button className="border-2 border-gray-600 text-black px-5 py-2 rounded-md hover:bg-gray-600 hover:text-white">
+          <button
+            className="border-2 border-gray-600 text-black px-5 py-2 rounded-md hover:bg-gray-600 hover:text-white"
+            onClick={() => setShowBulkActions(true)}
+          >
             Bulk Actions
           </button>
         </div>
@@ -83,7 +100,10 @@ const Candidates = () => {
             <th className="w-16 text-center"></th>
           </tr>
           {candidates.map((task) => (
-            <tr className="items-center justify-center bg-gray-50">
+            <tr
+              className="items-center justify-center bg-gray-50 hover:bg-gray-100 cursor-pointer"
+              onClick={() => setSelectedCandidate(task)}
+            >
               <td className="text-center">
                 <input type="checkbox" />
               </td>
@@ -101,6 +121,13 @@ const Candidates = () => {
           ))}
         </table>
       </div>
+
+      {showAddCandidate && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-40"></div>
+      )}
+      {showBulkActions && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-40"></div>
+      )}
       <Modal
         show={showAddCandidate}
         onHide={() => setShowAddCandidate(false)}
@@ -108,7 +135,15 @@ const Candidates = () => {
         className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border border-gray-300 rounded-2xl w-1/2 shadow-xl z-50 bg-white p-10"
       >
         <Modal.Header closeButton>
-          <Modal.Title>Add Candidate</Modal.Title>
+          <Modal.Title className="text-xl justify-between flex items-center p-0">
+            <p>Add Candidate</p>
+            <button
+              onClick={() => setShowAddCandidate(false)}
+              className="text-gray-600 hover:text-gray-900"
+            >
+              x
+            </button>
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form>
@@ -192,7 +227,6 @@ const Candidates = () => {
           </form>
         </Modal.Body>
         <Modal.Footer>
-
           <button
             onClick={() => setShowAddCandidate(false)}
             className="border-0 bg-blue-400 text-white px-5 py-2 rounded-full hover:bg-blue-600 hover:text-white w-full mt-10"
@@ -200,6 +234,103 @@ const Candidates = () => {
             Add Candidate
           </button>
         </Modal.Footer>
+      </Modal>
+      <Modal
+        show={showBulkActions}
+        onHide={() => setShowBulkActions(false)}
+        centered
+        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border border-gray-300 rounded-2xl w-1/2 shadow-xl z-50 bg-white p-10"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title className="text-xl justify-between flex items-center p-0">
+            <div>
+              <h1 className="text-xl">Bulk Actions</h1>
+              <p className="text-gray-500 text-sm">Select the bulk actions</p>
+            </div>
+            <button
+              onClick={() => setShowBulkActions(false)}
+              className="text-gray-600 hover:text-gray-900"
+            >
+              x
+            </button>
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="flex flex-col gap-2">
+            <button
+              className="border-0 bg-blue-400 text-white px-5 py-2 rounded-full hover:bg-blue-600 hover:text-white w-full mt-1"
+              onClick={() => setShowEmailModal1(true)}
+            >
+              Send Email
+            </button>
+            <button
+              className="border-0 bg-blue-400 text-white px-5 py-2 rounded-full hover:bg-blue-600 hover:text-white w-full mt-0"
+              onClick={() => setShowAddCandidate(true)}
+            >
+              Add Selected Candidates to Job
+            </button>
+          </div>
+        </Modal.Body>
+      </Modal>
+      <Modal
+        show={showEmailModal1}
+        onHide={() => setShowEmailModal1(false)}
+        centered
+        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border border-gray-300 rounded-2xl w-1/2 shadow-xl z-50 bg-white p-10"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>
+            <h1 className="text-xl">Send Email</h1>
+            <p className="text-gray-500">Select the template</p>
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="flex flex-col gap-2">
+            <select className="border-2 border-gray-300 p-2 rounded-md">
+              {templates.map((template) => (
+                <option value={template}>{template}</option>
+              ))}
+            </select>
+            <button
+              className="border-0 bg-blue-400 text-white px-5 py-2 rounded-full hover:bg-blue-600 hover:text-white w-full mt-1"
+              onClick={() => {
+                setShowEmailModal1(false);
+                setShowEmailModal2(true);
+              }}
+            >
+              Send Email
+            </button>
+          </div>
+        </Modal.Body>
+      </Modal>
+      <Modal
+        show={showEmailModal2}
+        onHide={() => setShowEmailModal2(false)}
+        centered
+        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border border-gray-300 rounded-2xl w-1/2 shadow-xl z-50 bg-white p-10"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>
+            <h1 className="text-xl">Send Email</h1>
+            <p className="text-gray-500">Email Template</p>
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="flex flex-col gap-2">
+            <textarea
+              className="border-2 border-gray-300 p-2 rounded-md h-28"
+              value={emailToSend}
+              onChange={(e) => setEmailToSend(e.target.value)}
+            ></textarea>
+
+            <button
+              className="border-0 bg-blue-400 text-white px-5 py-2 rounded-full hover:bg-blue-600 hover:text-white w-full mt-1"
+              onClick={() => setShowEmailModal2(false)}
+            >
+              Send Email
+            </button>
+          </div>
+        </Modal.Body>
       </Modal>
     </div>
   );
