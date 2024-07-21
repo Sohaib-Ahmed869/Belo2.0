@@ -8,6 +8,10 @@ import OTP from "./Login/otpverificiation";
 
 import DashboardLayout from "./AdminDashboard/DashboardLayout";
 
+import RecruiterLogin from "./Recruiter/Login/page";
+import RecruiterSignup from "./Recruiter/Signup";
+
+import RecruiterDashboardLayout from "./Recruiter/RecruiterDashboard/DashboardLayout";
 
 const Layout = () => {
   return (
@@ -18,6 +22,9 @@ const Layout = () => {
       <Route path="/otp" element={<OTP />} />
       <Route path="/admindashboard" element={<DashboardLayout />} />
 
+      <Route path="/recruiter-login" element={<RecruiterLogin />} />
+      <Route path="/recruiter-signup" element={<RecruiterSignup />} />
+      <Route path="/recruiterdashboard" element={<RecruiterDashboardLayout/>} />
     </Routes>
   );
 };

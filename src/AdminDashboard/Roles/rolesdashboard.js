@@ -256,11 +256,11 @@ const Candidates = () => {
 
   const [optionSelected, setOptionSelected] = useState("Active Roles");
   return selectedRole ? (
-    <div className="p-20 bg-white h-screen w-full overflow-y-auto z-1">
+    <div className="p-10 bg-white h-screen w-full overflow-y-auto z-1">
       <RoleDescription role={selectedRole} />
     </div>
   ) : (
-    <div className="p-20 bg-white h-screen w-full overflow-y-auto z-1">
+    <div className="p-10 bg-white h-screen w-full overflow-y-auto z-1">
       <div>
         <h1 className="text-3xl font-semi bold text-left">Roles</h1>
       </div>

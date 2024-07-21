@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Logo from "../Assets/Logo.png";
+import Logo from "../../Assets/Logo.png";
 import { CiMail } from "react-icons/ci";
 import { BiLock } from "react-icons/bi";
 import { Modal } from "react-bootstrap";
-const Login = () => {
+const ForgetPassword = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -21,49 +21,24 @@ const Login = () => {
             <CiMail size={22} className="mr-7" />
             <input
               type="email"
-              className="w-full focus:outline-none"
-              placeholder="Email"
+              className="w-full"
+              placeholder="olivia@untitled.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <p className="text-sm text-gray-500 mt-5">Password</p>
-          <div className="w-full flex  items-center border-2 border-gray-300 rounded-full p-3 mt-2">
-            <BiLock size={22} className="mr-7" />
-            <input
-              type="password"
-              className="w-full focus:outline-none"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-          <div className="flex justify-end mt-2">
-            <p
-              className="text-sm text-gray-800 cursor-pointer"
-              onClick={() => setShowForgetPasswordModal(true)}
-            >
-              Forgot Password?
-            </p>
-          </div>
         </div>
-        <button className="w-full bg-blue-400 text-white p-3 mt-10 rounded-full">
-          Login
+        <button
+          className="w-full bg-blue-400 text-white p-3 mt-10 rounded-full"
+          onClick={() => setShowForgetPasswordModal(true)}
+        >
+          Continue with Email
         </button>
         <p className="text-sm text-gray-500 mt-5">
-          Don't have an account?{" "}
-          <span
-            className="text-blue-400 cursor-pointer"
-            onClick={() => {
-              window.location.href = "/signup";
-            }}
-          >
-            Sign Up
+          Would your rather use a{" "}
+          <span className="text-blue-400 cursor-pointer">
+            email and password?
           </span>
-        </p>
-        <p className="text-sm text-gray-500 mt-5">
-          Are you a Hiring Manager?{" "}
-          <span className="text-blue-400 cursor-pointer">Click Here</span>
         </p>
       </div>
       {showForgetPasswordModal && (
@@ -73,7 +48,7 @@ const Login = () => {
         show={showForgetPasswordModal}
         onHide={() => setShowForgetPasswordModal(false)}
         centered
-        className=" p-10 rounded-2xl w-1/3 shadow-xl z-50 bg-white"
+        className=" p-10 rounded-2xl w-1/3 shadow-xl z-50"
         style={{
           position: "absolute",
           top: "50%",
@@ -83,28 +58,20 @@ const Login = () => {
       >
         <Modal.Header closeButton>
           <Modal.Title className="text-2xl font-bold">
-            Forgot Password?
+            One-Time Passcode
           </Modal.Title>
-          <p className="text-sm text-gray-500">
-            Enter email address associated with your account
-          </p>
         </Modal.Header>
         <Modal.Body>
-          <p className="text-sm text-gray-800">Email</p>
-          <div className="w-full flex  items-center border border-gray-300 rounded-md p-2 mt-2">
-            <input
-              type="email"
-              className="w-full focus:outline-none"
-              placeholder="Email Address"
-            />
-          </div>
+          <p className="text-md text-gray-800">
+            A One-Time Passcode will be sent on your account
+          </p>
         </Modal.Body>
         <Modal.Footer>
           <button
             className="bg-blue-400 text-white p-2 rounded-full w-full mt-10"
             onClick={() => setShowForgetPasswordModal(false)}
           >
-            Reset Password
+            Send OTP
           </button>
         </Modal.Footer>
       </Modal>
@@ -112,4 +79,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ForgetPassword;

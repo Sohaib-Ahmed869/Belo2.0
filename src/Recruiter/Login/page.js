@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Logo from "../Assets/Logo.png";
+import Logo from "../../Assets/Logo.png";
 import { CiMail } from "react-icons/ci";
 import { BiLock } from "react-icons/bi";
 import { Modal } from "react-bootstrap";
-const Login = () => {
+const RecruiterLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -55,7 +55,7 @@ const Login = () => {
           <span
             className="text-blue-400 cursor-pointer"
             onClick={() => {
-              window.location.href = "/signup";
+              window.location.href = "/recruiter-signup";
             }}
           >
             Sign Up
@@ -73,7 +73,7 @@ const Login = () => {
         show={showForgetPasswordModal}
         onHide={() => setShowForgetPasswordModal(false)}
         centered
-        className=" p-10 rounded-2xl w-1/3 shadow-xl z-50 bg-white"
+        className=" p-10 rounded-2xl w-1/3 shadow-xl z-50"
         style={{
           position: "absolute",
           top: "50%",
@@ -94,7 +94,7 @@ const Login = () => {
           <div className="w-full flex  items-center border border-gray-300 rounded-md p-2 mt-2">
             <input
               type="email"
-              className="w-full focus:outline-none"
+              className="w-full"
               placeholder="Email Address"
             />
           </div>
@@ -112,4 +112,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default RecruiterLogin;
