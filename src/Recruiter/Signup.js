@@ -49,13 +49,13 @@ const RecruiterSignup = () => {
           </div>
         </div>
         <button className="w-full bg-blue-400 text-white p-3 mt-10 rounded-full">
-          Login
+          Sign up
         </button>
         <p className="text-sm text-gray-500 mt-5">
           Already have an account?{" "}
           <span
             className="text-blue-400 cursor-pointer"
-            onClick={() => (window.location.href = "/login")}
+            onClick={() => (window.location.href = "/recruiter-login")}
           >
             Login
           </span>

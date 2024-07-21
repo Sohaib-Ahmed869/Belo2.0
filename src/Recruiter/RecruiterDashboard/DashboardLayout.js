@@ -19,6 +19,8 @@ import TermsAccess from "../HelpCenter/termsAccess";
 import Integration from "../HelpCenter/integration";
 import TroubleShooting from "../HelpCenter/troubleshooting";
 
+import Candidates from "../Roles/rolesdashboard";
+import Schedule from "./schedule";
 const RecruiterDashboardLayout = () => {
   const [activeOption, setActiveOption] = useState("Dashboard");
   const [showSettingsSuboptions, setShowSettingsSuboptions] = useState(false);
@@ -269,6 +271,8 @@ const RecruiterDashboardLayout = () => {
             {
               Dashboard: <RecruiterDashboard />,
               Candidates: <RecruiterCandidates />,
+              Roles: <Candidates />,
+              Schedule: <Schedule />,
               Team: <RecruiterTeam />,
               Profile: <Profile />,
               Billing: <Billing />,

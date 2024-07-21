@@ -42,13 +42,16 @@ const ForgetPassword = () => {
         </p>
       </div>
       {showForgetPasswordModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-40"></div>
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-40"
+          onClick={() => setShowForgetPasswordModal(false)}
+        ></div>
       )}
       <Modal
         show={showForgetPasswordModal}
         onHide={() => setShowForgetPasswordModal(false)}
         centered
-        className=" p-10 rounded-2xl w-1/3 shadow-xl z-50"
+        className=" p-10 rounded-2xl w-1/3 shadow-xl z-50 bg-white"
         style={{
           position: "absolute",
           top: "50%",
@@ -69,7 +72,7 @@ const ForgetPassword = () => {
         <Modal.Footer>
           <button
             className="bg-blue-400 text-white p-2 rounded-full w-full mt-10"
-            onClick={() => setShowForgetPasswordModal(false)}
+            onClick={() => (window.location.href = "/otp")}
           >
             Send OTP
           </button>

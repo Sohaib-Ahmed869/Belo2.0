@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Calendar from "react-calendar";
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";
 import { BsPlus } from "react-icons/bs";
@@ -6,8 +7,10 @@ import { Modal } from "react-bootstrap";
 import { GoLocation } from "react-icons/go";
 import { BiPhone } from "react-icons/bi";
 import { AiOutlineMail } from "react-icons/ai";
-import tick from "../Assets/tick.png";
-import pdf from "../Assets/pdf.png";
+import "react-calendar/dist/Calendar.css";
+import tick from "../../Assets/tick.png";
+import pdf from "../../Assets/pdf.png";
+import pfp from "../../Assets/pfp.png";
 
 const candidates = [
   {
@@ -44,7 +47,7 @@ const candidates = [
   },
 ];
 
-const CandidatesDashboard = () => {
+const HiringCandidates = () => {
   const [showAddCandidate, setShowAddCandidate] = useState(false);
   const [showBulkActions, setShowBulkActions] = useState(false);
   const [showEmailModal1, setShowEmailModal1] = useState(false);
@@ -55,6 +58,9 @@ const CandidatesDashboard = () => {
   const [addNoteModal, setAddNoteModal] = useState(false);
   const [showAddSuccess, setShowAddSuccess] = useState(false);
   const [emailHasbeenSent, setEmailHasBeenSent] = useState(false);
+  const [shareModal, setShareModal] = useState(false);
+  const [feedbackModal, setFeedbackModal] = useState(false);
+  const [ScheduleInterview, setScheduleInterview] = useState(false);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -96,7 +102,10 @@ const CandidatesDashboard = () => {
               <img src={pdf} alt="pdf" className="w-30" />
               <div className="flex flex-col gap-2 ml-10 w-full">
                 <div className="flex justify-end items-center gap-4">
-                  <button className="border border-gray-600 text-black px-8 py-2 rounded-md text-sm hover:bg-gray-600 hover:text-white">
+                  <button
+                    className="border border-gray-600 text-black px-8 py-2 rounded-md text-sm hover:bg-gray-600 hover:text-white"
+                    onClick={() => setShareModal(true)}
+                  >
                     Share
                   </button>
                   <BiDotsVerticalRounded
@@ -174,61 +183,39 @@ const CandidatesDashboard = () => {
             </div>
           </div>
           <div className="flex justify-between">
-            <h1 className="text-xl font-semibold">Applied For</h1>
-            <button
-              className="bg-blue-400 text-white px-5 py-2 rounded-md hover:bg-blue-600 hover:text-white flex items-center gap-2"
-              onClick={() => setShowAddtoJob(true)}
-            >
-              <BsPlus className="inline-block" size={20} />
-              Add to Another Job
-            </button>
+            <h1 className="text-2xl font-semibold">Feedback</h1>
           </div>
           <div className="border rounded-md p-5">
-            <div className="flex items-start">
-              <div className="flex flex-col gap-2 w-1/2">
-                <p className="text-blue-500">Wheel Dealers</p>
-                <p className="text-gray-900 font-semibold text-2xl">
-                  Series Producer
-                </p>
-                <p className="text-gray-500">Betty</p>
-              </div>
-              <div className="flex gap-2 w-1/2 justify-end items-start">
-                <p className="bg-gray-200 rounded-full p-1 px-4 text-black font-semibold">
-                  Interviewed
-                </p>
-              </div>
+            <div className="p-10 flex items-center justify-center gap-10">
+              <p className="text-blue-500 border border-blue-500 p-3 px-6 rounded-md">
+                Yes
+              </p>
+              <p className="text-blue-500 border border-blue-500 p-3 px-6 rounded-md">
+                No
+              </p>
+              <p className="text-blue-500 border border-blue-500 p-3 px-6 rounded-md">
+                Maybe
+              </p>
             </div>
-          </div>
-          <div className="border rounded-md p-5">
-            <div className="flex items-start">
-              <div className="flex flex-col gap-2 w-1/2">
-                <p className="text-blue-500">Wheel Dealers</p>
-                <p className="text-gray-900 font-semibold text-2xl">
-                  Series Producer
-                </p>
-                <p className="text-gray-500">Betty</p>
-              </div>
-              <div className="flex gap-2 w-1/2 justify-end items-start">
-                <p className="bg-gray-200 rounded-full p-1 px-4 text-black font-semibold">
-                  Interviewed
-                </p>
-              </div>
+            <div className="flex items-center ml-5">
+              <img src={pfp} alt="pfp" className="w-8 h-8 rounded-full" />
+              <p className="text-gray-900 font-semibold ml-3">
+                Hiring Manager Name
+              </p>
             </div>
-          </div>
-          <div className="border rounded-md p-5">
-            <div className="flex items-start">
-              <div className="flex flex-col gap-2 w-1/2">
-                <p className="text-blue-500">Wheel Dealers</p>
-                <p className="text-gray-900 font-semibold text-2xl">
-                  Series Producer
-                </p>
-                <p className="text-gray-500">Betty</p>
-              </div>
-              <div className="flex gap-2 w-1/2 justify-end items-start">
-                <p className="bg-red-200 rounded-full p-1 px-4 text-red-900 font-semibold">
-                  Shortlisted
-                </p>
-              </div>
+            <div className="flex flex-col ml-5 mt-5">
+              <p className="text-gray-700 font-semibold">Leave Feedback</p>
+              <textarea
+                type="text"
+                placeholder="Enter your feedback here..."
+                className="border-2 border-gray-300 bg-gray-50 p-2 rounded-md w-full h-20 mt-4"
+              />
+              <button
+                className="border-0 bg-blue-400 text-white px-5 py-2 rounded-full hover:bg-blue-600 hover:text-white w-full mt-5"
+                onClick={() => setFeedbackModal(true)}
+              >
+                Leave Feedback
+              </button>
             </div>
           </div>
         </div>
@@ -249,35 +236,34 @@ const CandidatesDashboard = () => {
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </div>
           </div>
-          <div className="mt-5 border-t pt-5">
-            <h1 className="text-2xl font-semibold">History</h1>
-            <div className="mt-4">
-              <h1 className="text-xl font-semibold">
-                Applied for Developers Role
-              </h1>
-              <p className="text-md text-blue-400">12/12/2021</p>
+          <div className="mt-5">
+            <div className="bg-gray-100 p-5 rounded-md">
+              Lorem ipsum dolor amet consectetur, adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </div>
-            <div className="mt-4">
-              <h1 className="text-xl font-semibold">
-                Applied for Developers Role
-              </h1>
-              <p className="text-md text-blue-400">12/12/2021</p>
+          </div>
+          <div className="mt-5">
+            <div className="bg-gray-100 p-5 rounded-md">
+              Lorem ipsum dolor amet consectetur, adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </div>
           </div>
           <div className="mt-5 border-t pt-5">
-            <h1 className="text-2xl font-semibold">Upcoming Roles</h1>
+            <h1 className="text-2xl font-semibold">Inteviews</h1>
             <div className="mt-4">
-              <h1 className="text-xl font-semibold">
-                Interview with Company ABC
-              </h1>
-              <p className="text-md text-blue-400">12/12/2021 - 10AM</p>
+              <h1 className="text-xl font-semibold">Researcher</h1>
+              <p className="text-md text-gray-600">Betty</p>
             </div>
             <div className="mt-4">
-              <h1 className="text-xl font-semibold">
-                Interview with Company ABC
-              </h1>
-              <p className="text-md text-blue-400">12/12/2021 - 10AM</p>
+              <h1 className="text-xl font-semibold">Researcher</h1>
+              <p className="text-md text-gray-600">Arbab</p>
             </div>
+            <button
+              className=" hover:bg-gray-400 hover:text-white px-5 py-2 rounded-full bg-transparent text-black border border-black w-full mt-5"
+              onClick={() => setScheduleInterview(true)}
+            >
+              Schedule an Interview
+            </button>
           </div>
         </div>
       </div>
@@ -306,6 +292,27 @@ const CandidatesDashboard = () => {
         <div
           className="fixed inset-0 bg-black bg-opacity-50 z-40"
           onClick={() => setEmailHasBeenSent(false)}
+        ></div>
+      )}
+
+      {shareModal && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-40"
+          onClick={() => setShareModal(false)}
+        ></div>
+      )}
+
+      {feedbackModal && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-40"
+          onClick={() => setFeedbackModal(false)}
+        ></div>
+      )}
+
+      {ScheduleInterview && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-40"
+          onClick={() => setScheduleInterview(false)}
         ></div>
       )}
 
@@ -416,7 +423,7 @@ const CandidatesDashboard = () => {
         show={emailHasbeenSent}
         onHide={() => setEmailHasBeenSent(false)}
         centered
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border border-gray-300 rounded-2xl w-1/3 shadow-xl z-50 bg-white p-10"
+        className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border border-gray-300 rounded-2xl w-1/3 shadow-xl z-50 bg-white p-10"
       >
         <Modal.Header closeButton>
           <Modal.Title></Modal.Title>
@@ -435,6 +442,98 @@ const CandidatesDashboard = () => {
             className="border-0 bg-blue-400 text-white px-5 py-2 rounded-full hover:bg-blue-600 hover:text-white w-full mt-10"
           >
             Close
+          </button>
+        </Modal.Footer>
+      </Modal>
+      <Modal
+        show={feedbackModal}
+        onHide={() => setFeedbackModal(false)}
+        centered
+        className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border border-gray-300 rounded-2xl w-1/3 shadow-xl z-50 bg-white p-10"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title></Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="flex flex-col gap-2 items-center">
+            <img src={tick} alt="tick" className="w-20" />
+            <p className="text-gray-900 text-lg mt-5">Submit Feedback</p>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <button
+            onClick={() => setFeedbackModal(false)}
+            className="border-0 bg-blue-400 text-white px-5 py-2 rounded-full hover:bg-blue-600 hover:text-white w-full mt-10"
+          >
+            Confirm
+          </button>
+        </Modal.Footer>
+      </Modal>
+      <Modal
+        show={shareModal}
+        onHide={() => setShareModal(false)}
+        centered
+        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-2xl w-1/3 shadow-xl z-50 bg-white p-5"
+      >
+        <Modal.Header className="flex justify-between">
+          <Modal.Title>
+            <h1 className="text-lg">Share this Candidate</h1>
+          </Modal.Title>
+          <button
+            onClick={() => setShareModal(false)}
+            className="text-gray-600 hover:text-gray-900"
+          >
+            x
+          </button>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="flex flex-col gap-2 mt-10">
+            <textarea
+              className="border-2 border-gray-300 p-2 rounded-md h-28"
+              placeholder="Enter Email..."
+            ></textarea>
+            <button
+              className="mt-10 border-0 bg-blue-400 text-white px-5 py-2 rounded-full hover:bg-blue-600 hover:text-white w-full"
+              onClick={() => setShareModal(false)}
+            >
+              Share
+            </button>
+          </div>
+        </Modal.Body>
+      </Modal>
+      <Modal
+        show={ScheduleInterview}
+        onHide={() => setScheduleInterview(false)}
+        centered
+        className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border border-gray-300 rounded-2xl w-1/3 shadow-xl z-50 bg-white p-5"
+      >
+        <Modal.Header closeButton>What Would Work Best For You?</Modal.Header>
+        <Modal.Body className="mt-10">
+          <div className="flex ">
+            <div className="w-1/3 flex flex-col border-2 border-gray-200">
+              {[
+                "Today",
+                "11:00 AM",
+                "12:00 PM",
+                "1:00 PM",
+                "2:00 PM",
+                "3:00 PM",
+                "4:00 PM",
+              ].map((time) => (
+                <button className="p-2 text-left w-full mt-2">{time}</button>
+              ))}
+            </div>
+            <Calendar className="w-2/3 border-0" />
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <button
+            onClick={() => {
+              setScheduleInterview(false);
+            }}
+            className="border-0 bg-blue-400 text-white px-5 py-2 rounded-full hover:bg-blue-600 hover:text-white w-full mt-10"
+          >
+            Schedule Interview
           </button>
         </Modal.Footer>
       </Modal>
@@ -768,4 +867,4 @@ const CandidatesDashboard = () => {
   );
 };
 
-export default CandidatesDashboard;
+export default HiringCandidates;

@@ -1,27 +1,31 @@
 import React, { useState } from "react";
-import Logo from "../Assets/Logo.png";
-import dashboard from "../Assets/dashboard.png";
+import Logo from "../../Assets/Logo.png";
 import { FaSearch, FaBars, FaUserCircle } from "react-icons/fa";
 import { MdArrowDropDown } from "react-icons/md";
+import dashboard from "../../Assets/dashboard.png";
+import { BsCardChecklist } from "react-icons/bs";
+import { BiUser } from "react-icons/bi";
+import { BsCalendarCheckFill } from "react-icons/bs";
+import { FcSettings } from "react-icons/fc";
+import { AiFillMail } from "react-icons/ai";
+import { BsFillQuestionSquareFill } from "react-icons/bs";
 
-import Dashboard from "./dashboard";
-import Team from "./team";
+import HiringCandidates from "./Candidates";
+
+import Profile from "../Settings/profile";
+import Billing from "../Settings/billing";
+import Email from "../Settings/email";
+import HelpCenter from "../HelpCenter/Main/main";
+import GettingStarted from "../HelpCenter/gettingStarted";
+import UsingBelo from "../HelpCenter/usingBelo";
+import SubBilling from "../HelpCenter/subBilling";
+import TermsAccess from "../HelpCenter/termsAccess";
+import Integration from "../HelpCenter/integration";
+import TroubleShooting from "../HelpCenter/troubleshooting";
+import Candidates from "../Roles/rolesdashboard";
 import Schedule from "./schedule";
-import HelpCenter from "./HelpCenter/Main/main";
-import GettingStarted from "./HelpCenter/gettingStarted";
-import UsingBelo from "./HelpCenter/usingBelo";
-import SubBilling from "./HelpCenter/subBilling";
-import TermsAccess from "./HelpCenter/termsAccess";
-import Integration from "./HelpCenter/integration";
-import TroubleShooting from "./HelpCenter/troubleshooting";
-import Profile from "./Settings/profile";
-import Billing from "./Settings/billing";
-import Email from "./Settings/email";
-import CandidatesDashboard from "./candidates";
-import RolesDashboard from "./Roles/rolesdashboard";
-
-const DashboardLayout = () => {
-  const [activeOption, setActiveOption] = useState("Dashboard");
+const HiringManagerDashboardLayout = () => {
+  const [activeOption, setActiveOption] = useState("Roles");
   const [showSettingsSuboptions, setShowSettingsSuboptions] = useState(false);
   const [showHelpCenterSuboptions, setShowHelpCenterSuboptions] =
     useState(false);
@@ -55,33 +59,9 @@ const DashboardLayout = () => {
         <div className="flex flex-col items-start justify-center text-black ">
           <div
             className={`flex items-center gap-2 w-full hover:bg-gray-300 p-4 cursor-pointer hover:font-semibold pl-4 ${
-              activeOption === "Dashboard" ? "bg-gray-300" : ""
-            }`}
-            onClick={() => {
-              setActiveOption("Dashboard");
-              setShowSettingsSuboptions(false);
-              setShowHelpCenterSuboptions(false);
-            }}
-          >
-            <img src={dashboard} alt="dashboard" className="w-4 mr-2" />
-            <p>Dashboard</p>
-          </div>
-          <div
-            className={`flex items-center gap-2 w-full hover:bg-gray-300 p-4 cursor-pointer hover:font-semibold pl-4  ${
-              activeOption === "Candidates" ? "bg-gray-300" : ""
-            }`}
-            onClick={() => {
-              setActiveOption("Candidates");
-              setShowSettingsSuboptions(false);
-              setShowHelpCenterSuboptions(false);
-            }}
-          >
-            <img src={dashboard} alt="dashboard" className="w-4 mr-2" />
-            <p className="">Candidates</p>
-          </div>
-          <div
-            className={`flex items-center gap-2 w-full hover:bg-gray-300 p-4 cursor-pointer hover:font-semibold pl-4 ${
-              activeOption === "Roles" ? "bg-gray-300" : ""
+              activeOption === "Roles"
+                ? "bg-gray-300 text-blue-500 font-semibold"
+                : ""
             }`}
             onClick={() => {
               setActiveOption("Roles");
@@ -89,25 +69,30 @@ const DashboardLayout = () => {
               setShowHelpCenterSuboptions(false);
             }}
           >
-            <img src={dashboard} alt="dashboard" className="w-4 mr-2" />
-            <p className="">Roles</p>
+            <BsCardChecklist className="mr-2" />
+            <p className="text-gray-800">Roles</p>
           </div>
           <div
-            className={`flex items-center gap-2 w-full hover:bg-gray-300 p-4 cursor-pointer hover:font-semibold pl-4 ${
-              activeOption === "Team" ? "bg-gray-300" : ""
+            className={`flex items-center gap-2 w-full hover:bg-gray-300 p-4 cursor-pointer hover:font-semibold pl-4  ${
+              activeOption === "Candidates"
+                ? "bg-gray-300 text-blue-500 font-semibold"
+                : ""
             }`}
             onClick={() => {
-              setActiveOption("Team");
+              setActiveOption("Candidates");
               setShowSettingsSuboptions(false);
               setShowHelpCenterSuboptions(false);
             }}
           >
-            <img src={dashboard} alt="dashboard" className="w-4 mr-2" />
-            <p className="">Team</p>
+            <BiUser className="mr-2" />
+            <p className="text-gray-800">Candidates</p>
           </div>
+
           <div
             className={`flex items-center gap-2 w-full hover:bg-gray-300 p-4 cursor-pointer hover:font-semibold pl-4 ${
-              activeOption === "Schedule" ? "bg-gray-300" : ""
+              activeOption === "Schedule"
+                ? "bg-gray-300 text-blue-500 font-semibold"
+                : ""
             }`}
             onClick={() => {
               setActiveOption("Schedule");
@@ -115,13 +100,13 @@ const DashboardLayout = () => {
               setShowHelpCenterSuboptions(false);
             }}
           >
-            <img src={dashboard} alt="dashboard" className="w-4 mr-2" />
-            <p className="">Schedule</p>
+            <BsCalendarCheckFill className="mr-2" />
+            <p className="text-gray-800">Schedule</p>
           </div>
           <div
             className={`flex items-center gap-2 w-full hover:bg-gray-300 p-4 cursor-pointer hover:font-semibold pl-4 ${
               ["Profile", "Billing", "Email"].includes(activeOption)
-                ? "bg-gray-200"
+                ? "bg-gray-200 text-blue-500 font-semibold"
                 : ""
             }`}
             onClick={() => {
@@ -129,8 +114,8 @@ const DashboardLayout = () => {
               toggleSettingsSuboptions();
             }}
           >
-            <img src={dashboard} alt="dashboard" className="w-4 mr-2" />
-            <p className="">Settings</p>
+            <FcSettings className="mr-2" />
+            <p className="text-gray-800">Settings</p>
           </div>
           {showSettingsSuboptions && (
             <>
@@ -140,25 +125,17 @@ const DashboardLayout = () => {
                 }`}
                 onClick={() => setActiveOption("Profile")}
               >
-                <img src={dashboard} alt="dashboard" className="w-4 mr-2" />
+                <BiUser className="mr-2" />
                 <p className="">Profile</p>
               </div>
-              <div
-                className={`flex items-center gap-2 pl-10 w-full hover:bg-gray-300 p-4 cursor-pointer hover:font-semibold ${
-                  activeOption === "Billing" ? "bg-gray-300" : ""
-                }`}
-                onClick={() => setActiveOption("Billing")}
-              >
-                <img src={dashboard} alt="dashboard" className="w-4 mr-2" />
-                <p className="">Billing</p>
-              </div>
+
               <div
                 className={`flex items-center gap-2 pl-10 w-full hover:bg-gray-300 p-4 cursor-pointer hover:font-semibold ${
                   activeOption === "Email" ? "bg-gray-300" : ""
                 }`}
                 onClick={() => setActiveOption("Email")}
               >
-                <img src={dashboard} alt="dashboard" className="w-4 mr-2" />
+                <AiFillMail className="mr-2" />
                 <p className="">Email</p>
               </div>
             </>
@@ -174,7 +151,7 @@ const DashboardLayout = () => {
                 "Integration",
                 "TroubleShooting",
               ].includes(activeOption)
-                ? "bg-gray-200"
+                ? "bg-gray-200 text-blue-500 font-semibold"
                 : ""
             }`}
             onClick={() => {
@@ -182,8 +159,8 @@ const DashboardLayout = () => {
               toggleHelpCenterSuboptions();
             }}
           >
-            <img src={dashboard} alt="dashboard" className="w-4 mr-2" />
-            <p className="">Help Center</p>
+            <BsFillQuestionSquareFill className="mr-2" />
+            <p className="text-gray-800">Help Center</p>
           </div>
           {showHelpCenterSuboptions && (
             <>
@@ -268,10 +245,10 @@ const DashboardLayout = () => {
         <div>
           {
             {
-              Dashboard: <Dashboard />,
-              Candidates: <CandidatesDashboard />,
-              Roles: <RolesDashboard />,
-              Team: <Team />,
+ 
+              Candidates: <HiringCandidates />,
+              Roles: <Candidates />,
+       
               Schedule: <Schedule />,
               Profile: <Profile />,
               Billing: <Billing />,
@@ -291,4 +268,4 @@ const DashboardLayout = () => {
   );
 };
 
-export default DashboardLayout;
+export default HiringManagerDashboardLayout;

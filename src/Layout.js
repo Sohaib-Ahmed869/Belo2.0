@@ -13,9 +13,13 @@ import RecruiterSignup from "./Recruiter/Signup";
 
 import RecruiterDashboardLayout from "./Recruiter/RecruiterDashboard/DashboardLayout";
 
+import HiringManagerDashboardLayout from "./HiringManager/HiringManagerDashboard/DashboardLayout";
+
+import HomePage from "./examplepage";
 const Layout = () => {
   return (
     <Routes>
+      <Route path="/" element={<HomePage />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/forgetpassword" element={<ForgetPassword />} />
@@ -24,7 +28,15 @@ const Layout = () => {
 
       <Route path="/recruiter-login" element={<RecruiterLogin />} />
       <Route path="/recruiter-signup" element={<RecruiterSignup />} />
-      <Route path="/recruiterdashboard" element={<RecruiterDashboardLayout/>} />
+      <Route
+        path="/recruiterdashboard"
+        element={<RecruiterDashboardLayout />}
+      />
+
+      <Route
+        path="/hiringmanagerdashboard"
+        element={<HiringManagerDashboardLayout />}
+      />
     </Routes>
   );
 };

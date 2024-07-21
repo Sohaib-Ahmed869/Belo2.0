@@ -47,7 +47,10 @@ const Login = () => {
             </p>
           </div>
         </div>
-        <button className="w-full bg-blue-400 text-white p-3 mt-10 rounded-full">
+        <button
+          className="w-full bg-blue-400 text-white p-3 mt-10 rounded-full"
+          onClick={() => (window.location.href = "/admindashboard")}
+        >
           Login
         </button>
         <p className="text-sm text-gray-500 mt-5">
@@ -67,7 +70,10 @@ const Login = () => {
         </p>
       </div>
       {showForgetPasswordModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-40"></div>
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-40"
+          onClick={() => setShowForgetPasswordModal(false)}
+        ></div>
       )}
       <Modal
         show={showForgetPasswordModal}
@@ -102,7 +108,7 @@ const Login = () => {
         <Modal.Footer>
           <button
             className="bg-blue-400 text-white p-2 rounded-full w-full mt-10"
-            onClick={() => setShowForgetPasswordModal(false)}
+            onClick={() => (window.location.href = "/forgetpassword")}
           >
             Reset Password
           </button>

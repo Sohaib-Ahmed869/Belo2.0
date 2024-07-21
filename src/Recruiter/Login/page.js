@@ -47,7 +47,7 @@ const RecruiterLogin = () => {
             </p>
           </div>
         </div>
-        <button className="w-full bg-blue-400 text-white p-3 mt-10 rounded-full">
+        <button className="w-full bg-blue-400 text-white p-3 mt-10 rounded-full" onClick={() => (window.location.href = "/recruiterdashboard")}>
           Login
         </button>
         <p className="text-sm text-gray-500 mt-5">

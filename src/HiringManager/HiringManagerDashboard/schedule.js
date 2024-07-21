@@ -5,7 +5,7 @@ import { format, parse, startOfWeek, getDay } from "date-fns";
 import enUS from "date-fns/locale/en-US";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import { FaSearch } from "react-icons/fa";
-import CustomEvent from "../Components/customEvents";
+import CustomEvent from "../../Components/customEvents";
 
 const locales = {
   "en-US": enUS,
